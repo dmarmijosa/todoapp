@@ -10,7 +10,7 @@
         type="text"
         [formControl]="newsTaskCtrl"
         (keydown.enter)="changeHandle()"
-      />
+        />
     </div>
   </header>
   <div class="container todoapp-wrapper">
@@ -19,68 +19,70 @@
     <section class="main">
       <ul class="todo-list">
         @for (task of taskByFilter(); track $index) {
-        <li (dblclick)="updateTaskEditingMode($index)" [class.editing]="task.editing" [class.completed]="task.complete">
-          <div class="view">
-            <input
-              class="toggle"
-              type="checkbox"
-              [checked]="task.complete"
-              (change)="updateTaks($index)"
-            />
-            <label>{{ task.title }}</label>
-            <button class="destroy" (click)="deleteTask($index)"></button>
-          </div>
-          <input class="edit" appAllowLetterNumberSpaces (keydown.enter)="updateTaskText($index, $event)" [value]="task.title" />
-        </li>
-        }@empty {
-        <li>No Hay tareas pendientes</li>
+          <li (dblclick)="updateTaskEditingMode($index)" [class.editing]="task.editing" [class.completed]="task.complete">
+            <div class="view">
+              <input
+                class="toggle"
+                type="checkbox"
+                [checked]="task.complete"
+                (change)="updateTaks($index)"
+                />
+              <label>{{ task.title }}</label>
+              <button class="destroy" (click)="deleteTask($index)"></button>
+            </div>
+            <input class="edit" appAllowLetterNumberSpaces (keydown.enter)="updateTaskText($index, $event)" [value]="task.title" />
+          </li>
+          }@empty {
+          <li>No Hay tareas pendientes</li>
         }
 
         <!-- <li class="completed">
-          <div class="view">
-            <input class="toggle" type="checkbox" checked />
-            <label>Learn JavaScript</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Learn JavaScript" />
-        </li>
-        <li>
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>Buy a unicorn</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Buy a unicorn" />
-        </li>
-        <li class="editing">
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>Make dishes</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Make dishes" />
-        </li> -->
-      </ul>
-    </section>
-    <!-- This footer should be hidden by default and shown when there are todos -->
-    <footer class="footer" >
-      <!-- This should be `0 items left` by default -->
-      <span class="todo-count"
-        ><strong>{{ taskByFilter().length > 0 ? taskByFilter().length : "" }} </strong>
-        @if(taskByFilter().length>1){ items } @else if(taskByFilter().length==1){item}@else {}
+        <div class="view">
+          <input class="toggle" type="checkbox" checked />
+          <label>Learn JavaScript</label>
+          <button class="destroy"></button>
+        </div>
+        <input class="edit" value="Learn JavaScript" />
+      </li>
+      <li>
+        <div class="view">
+          <input class="toggle" type="checkbox" />
+          <label>Buy a unicorn</label>
+          <button class="destroy"></button>
+        </div>
+        <input class="edit" value="Buy a unicorn" />
+      </li>
+      <li class="editing">
+        <div class="view">
+          <input class="toggle" type="checkbox" />
+          <label>Make dishes</label>
+          <button class="destroy"></button>
+        </div>
+        <input class="edit" value="Make dishes" />
+      </li> -->
+    </ul>
+  </section>
+  <!-- This footer should be hidden by default and shown when there are todos -->
+  <footer class="footer" >
+    <!-- This should be `0 items left` by default -->
+    <span class="todo-count"
+      ><strong>{{ taskByFilter().length > 0 ? taskByFilter().length : "" }} </strong>
+      @if(taskByFilter().length>1){ items } @else if(taskByFilter().length==1){item}@else {}
       </span>
       <!-- Remove this if you don't implement routing -->
-      <ul class="filters" *ngIf="taskByFilter().length > 0">
-        <li>
-          <a (click)="changeFilter('all')" [class.selected]="filter()=='all'">All</a>
-        </li>
-        <li>
-          <a (click)="changeFilter('pending')"  [class.selected]="filter()=='pending'">Pending</a>
-        </li>
-        <li>
-          <a (click)="changeFilter('completed')"  [class.selected]="filter()=='completed'">Completed</a>
-        </li>
-      </ul>
+      @if (taskByFilter().length > 0) {
+        <ul class="filters">
+          <li>
+            <a (click)="changeFilter('all')" [class.selected]="filter()=='all'">All</a>
+          </li>
+          <li>
+            <a (click)="changeFilter('pending')"  [class.selected]="filter()=='pending'">Pending</a>
+          </li>
+          <li>
+            <a (click)="changeFilter('completed')"  [class.selected]="filter()=='completed'">Completed</a>
+          </li>
+        </ul>
+      }
       <!-- Hidden if no completed items are left ↓ -->
       <button class="clear-completed">Clear completed</button>
     </footer>

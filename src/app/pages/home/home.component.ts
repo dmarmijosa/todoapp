@@ -8,14 +8,14 @@ import {
   signal,
 } from '@angular/core';
 import { Task } from '../interfaces/task.interface';
-import { CommonModule } from '@angular/common';
+
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AllowLetterNumberSpacesDirective } from '../../directives/allow-letter-number-spaces.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AllowLetterNumberSpacesDirective],
+  imports: [ReactiveFormsModule, AllowLetterNumberSpacesDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
