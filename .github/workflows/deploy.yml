@@ -18,10 +18,14 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_KEY }}
 
+    - name: Add server to known_hosts
+      run: |
+        ssh-keyscan -H 35.240.65.245 >> ~/.ssh/known_hosts
+
     - name: Transfer build files to VM
       run: |
         scp -r ./dist/todoapp dmarmijosa2667@35.240.65.245:/home/dmarmijosa2667/angular-app
 
     - name: Restart NGINX
       run: |
-        ssh dmarmijosa@35.240.65.245 "sudo systemctl restart nginx"
+        ssh dmarmijosa2667@35.240.65.245 "sudo systemctl restart nginx"
