@@ -27,16 +27,16 @@ jobs:
       run: |
         if [[ "${{ github.ref_name }}" == "production-deploy" ]]; then
           echo "env=production" >> $GITHUB_ENV
-          echo "ip=PROD_IP_ADDRESS" >> $GITHUB_ENV
+          echo "ip=104.199.26.216" >> $GITHUB_ENV
         else
           echo "env=development" >> $GITHUB_ENV
-          echo "ip=DEV_IP_ADDRESS" >> $GITHUB_ENV
+          echo "ip=10.132.0.2" >> $GITHUB_ENV
         fi
 
     - name: Build Angular App
       run: |
         if [[ "${{ env.env }}" == "production" ]]; then
-          npm run build -- --configuration=production
+          npm run build-prod
         else
           npm run build-dev
         fi
@@ -48,12 +48,12 @@ jobs:
 
     - name: Add server to known_hosts
       run: |
-        ssh-keyscan -H 35.240.65.245 >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ env.ip }} >> ~/.ssh/known_hosts
 
     - name: Transfer build files to VM
       run: |
-        scp -r ./dist/todoapp dmarmijosa2667@35.240.65.245:/home/dmarmijosa2667/angular-app
+        scp -r ./dist/todoapp dmarmijosa2667@${{ env.ip }}:/home/dmarmijosa2667/angular-app
 
     - name: Restart NGINX
       run: |
-        ssh dmarmijosa2667@35.240.65.245 "sudo systemctl restart nginx"
+        ssh dmarmijosa2667@${{ env.ip }} "sudo systemctl restart nginx"
