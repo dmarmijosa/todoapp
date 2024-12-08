@@ -77,9 +77,10 @@
               ]
             },
             "development": {
-              "optimization": false,
-              "extractLicenses": false,
+              "optimization": true,
+              "outputHashing": "none",
               "sourceMap": true,
+              "extractLicenses": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
