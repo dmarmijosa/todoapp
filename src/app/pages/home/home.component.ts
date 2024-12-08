@@ -11,7 +11,7 @@ import { Task } from '../interfaces/task.interface';
 
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AllowLetterNumberSpacesDirective } from '../../directives/allow-letter-number-spaces.directive';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +21,7 @@ import { environment } from '../../../environments/environment';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  entorno = environment.entorno;
+  entorno = environment.entorno+' '+environment.version;
   injector = inject(Injector);
   tasks = signal<Task[]>([]);
   filter = signal<'pending' | 'all' | 'completed'>('all');

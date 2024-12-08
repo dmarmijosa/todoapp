@@ -1,3 +1,4 @@
 export const environment = {
-    entorno:"Local"
+    entorno:"Local",
+    version:'2.0.0'
 };
