@@ -79,7 +79,7 @@
             },
             "development": {
               "optimization": true,
-              "outputHashing": "none",
+              "outputHashing": "all",
               "outputPath":"dist/todoapp",
               "sourceMap": true,
               "extractLicenses": false,
