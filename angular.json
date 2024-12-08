@@ -69,7 +69,7 @@
                 }
               ],
               "outputHashing": "all",
-              "outputPath":"dist/browser",
+              "outputPath":"dist/todoapp",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -80,7 +80,7 @@
             "development": {
               "optimization": true,
               "outputHashing": "none",
-              "outputPath":"dist/browser",
+              "outputPath":"dist/todoapp",
               "sourceMap": true,
               "extractLicenses": false,
               "fileReplacements": [
