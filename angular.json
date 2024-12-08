@@ -69,6 +69,7 @@
                 }
               ],
               "outputHashing": "all",
+              "outputPath":"dist/browser",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -79,6 +80,7 @@
             "development": {
               "optimization": true,
               "outputHashing": "none",
+              "outputPath":"dist/browser",
               "sourceMap": true,
               "extractLicenses": false,
               "fileReplacements": [
