@@ -3,7 +3,8 @@ name: Deploy to Google Cloud VM
 on:
   push:
     branches:
-      - development-deploy  # Cambia 'main' por la rama que deseas supervisar
+      - development-deploy
+      - production-deploy 
 
 jobs:
   deploy:
@@ -21,8 +22,24 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Determine Environment
+      id: environment
+      run: |
+        if [[ "${{ github.ref_name }}" == "production-deploy" ]]; then
+          echo "env=production" >> $GITHUB_ENV
+          echo "ip=PROD_IP_ADDRESS" >> $GITHUB_ENV
+        else
+          echo "env=development" >> $GITHUB_ENV
+          echo "ip=DEV_IP_ADDRESS" >> $GITHUB_ENV
+        fi
+
     - name: Build Angular App
-      run: npm run build-dev
+      run: |
+        if [[ "${{ env.env }}" == "production" ]]; then
+          npm run build -- --configuration=production
+        else
+          npm run build-dev
+        fi
 
     - name: Setup SSH
       uses: webfactory/ssh-agent@v0.5.3
