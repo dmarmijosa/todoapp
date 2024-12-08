@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { environment } from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'todoapp';
   welcome = 'Bienvenido a mi primera aplicación de tareas';
   task = [
@@ -19,8 +18,5 @@ export class AppComponent implements OnInit{
     'Crear Servicio',
   ];
 
-  ngOnInit(): void {
-    console.log(`Entorno de publicación: ${environment.entorno} Versión: 1.0.0`);
-  }
   
 }
