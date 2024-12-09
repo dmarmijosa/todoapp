@@ -27,7 +27,7 @@ jobs:
       run: |
         if [[ "${{ github.ref_name }}" == "production-deploy" ]]; then
           echo "env=production" >> $GITHUB_ENV
-          echo "ip=104.199.26.216" >> $GITHUB_ENV
+          echo "ip=34.22.217.193" >> $GITHUB_ENV
         else
           echo "env=development" >> $GITHUB_ENV
           echo "ip=35.240.65.245" >> $GITHUB_ENV
