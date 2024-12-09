@@ -67,5 +67,5 @@ jobs:
       run: |
         git fetch origin main
         git checkout main
-        git merge ${{ github.ref_name }} --allow-unrelated-histories --strategy-option=theirs -m "Automated merge from ${{ github.ref_name }}"
-        git push origin main
+        git merge ${{ github.ref_name }} --allow-unrelated-histories -m "Automated merge from ${{ github.ref_name }}"
+        git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/dmarmijosa/todoapp.git main
