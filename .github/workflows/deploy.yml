@@ -62,5 +62,5 @@ jobs:
       run: |
         git fetch origin main
         git checkout main
-        git merge ${{ github.ref_name }} --no-ff -m "Automated merge from ${{ github.ref_name }}"
+        git merge ${{ github.ref_name }} --allow-unrelated-histories -m "Automated merge from ${{ github.ref_name }}"
         git push origin main
