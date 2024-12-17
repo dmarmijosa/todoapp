@@ -5,6 +5,7 @@ on:
     branches:
       - development-deploy
       - production-deploy
+  workflow_dispatch:
 
 jobs:
   deploy:
