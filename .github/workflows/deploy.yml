@@ -2,9 +2,7 @@ name: Deploy to Google Cloud VM
 
 on:
   push:
-    branches:
-      - development-deploy
-      - production-deploy
+    branches: [development-deploy, production-deploy]
   workflow_dispatch:
 
 jobs:
